@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Template Creator</title>
+
+    </head>
+    <body>
+        <div id="jacobData"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+        <script>
+            let myInfo = "<p>My name is {{name}} and I live at {{street}} in {{city}}, {{state}}</p>";
+            let template = Handlebars.compile(myInfo);
+            let data = template({name: "Jacob", street: "35 Corliss Ave", city: "Rensselaer", state: "NY"});
+
+            document.getElementById('jacobData').innerHTML += data;
+
+        </script>
+    </body>
+</html>

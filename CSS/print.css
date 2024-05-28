@@ -1,0 +1,38 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+body {
+    width: 8.5in;
+    height: 11in;
+    margin: 0 auto;
+    color: red;
+}
+
+header {
+    text-align: center;
+}
+
+.notice {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    margin: 10mm;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.right-align.thanks {
+    margin-right: 25%;
+}
+
+.right-align.owners-name {
+    margin-right: 15%;
+}

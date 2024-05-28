@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Template Creator</title>
+<script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+</head>
+<body>
+<form id="templateForm">
+    <label for="template">Enter your template:</label>
+    <textarea id="template" name="template" rows="4" cols="50">Hello, {{username}}!</textarea><br>
+    <button type="button" onclick="previewTemplate()">Preview</button>
+    <button type="submit">Save Template</button>
+    <div id="previewArea"></div>
+</form>
+
+<script>
+function previewTemplate() {
+    var templateSource = document.getElementById('template').value;
+    var template = Handlebars.compile(templateSource);
+    var context = { username: "ExampleUser" }; // Example data for preview
+    var html = template(context);
+    document.getElementById('previewArea').innerHTML = html;
+}
+
+document.getElementById('templateForm').onsubmit = function(event) {
+    event.preventDefault();
+    var templateData = document.getElementById('template').value;
+    fetch('save_template.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'template=' + encodeURIComponent(templateData)
+    })
+    .then(response => response.text())
+    .then(data => alert('Template saved successfully!'))
+    .catch(error => alert('Error saving template: ' + error));
+};
+</script>
+</body>
+</html>
